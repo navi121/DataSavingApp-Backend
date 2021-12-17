@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "qf46aqwA30PUQvZjw1uzEWAPV2O67C8H6SfFv5vv4AviEpTFjyT2XpVDZPY8dFqT2+SosLZpUp0ZNAaYktdbZQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\NaveenNatarajan\\source\\repos\\DataSavingApplication\\DataSavingApplication\\DataSavingApplication.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\NaveenNatarajan\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\NaveenNatarajan\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\NaveenNatarajan\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\NaveenNatarajan\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\NaveenNatarajan\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\NaveenNatarajan\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
