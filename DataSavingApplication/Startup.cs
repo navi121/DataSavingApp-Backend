@@ -1,6 +1,10 @@
+using DataSavingApplication.Models;
+using DataSavingApplication.Service;
+using DataSavingApplication.Service.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,7 +29,10 @@ namespace DataSavingApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //    services.AddDbContext<DataSavingAppContext>(options =>
+            //options.UseSqlServer(Configuration.GetConnectionString("BloggingDatabase")));
 
+            services.AddScoped<IAddDataService, AddDataService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -42,6 +49,10 @@ namespace DataSavingApplication
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DataSavingApplication v1"));
             }
+            app.UseCors(options =>
+            options.WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()  
+            .AllowAnyHeader());
 
             app.UseRouting();
 
