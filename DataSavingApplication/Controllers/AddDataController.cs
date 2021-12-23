@@ -1,5 +1,6 @@
 ﻿using DataSavingApplication.Models;
 using DataSavingApplication.Service.Interface;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
@@ -16,25 +17,21 @@ namespace DataSavingApplication.Controllers
     public class AddDataController : ControllerBase
     {
         private readonly IAddDataService _addDataService;
+   
         public AddDataController(IAddDataService addDataService)
         {
             _addDataService = addDataService;
         }
 
-        [Route("AddData")]
+        [Route("AddFile")]
         [HttpPost]
-        public IActionResult PostData([FromBody]List< DataSavingModel> requestData)
+        public IActionResult importExcel(IFormFile file)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-
             try
             {
-                var result = _addDataService.AddData(requestData);
+                var data = _addDataService.AddData(file);
 
-                if (result == false)
+                if (data == false)
                 {
                     return BadRequest();
                 }
@@ -42,48 +39,12 @@ namespace DataSavingApplication.Controllers
                 return Ok();
             }
 
-            catch (Exception ex)
+            catch(Exception ex)
             {
+
                 return StatusCode(StatusCodes.Status500InternalServerError, new { ex.Message, Type = ex.GetType().ToString() });
             }
 
-        }
-
-        [Route("AddFile")]
-        [HttpPost]
-        public async Task<IActionResult> importExcel(IFormFile file)
-        {
-            var list = new List<DataSavingModel>();
-
-            string extension = Path.GetExtension(file.FileName);
-
-            if(extension != ".xlsx" || extension != ".xls")
-            {
-                return BadRequest();
-            }
-
-            using (var stream = new MemoryStream())
-            {
-                await file.CopyToAsync(stream);
-                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-                using (var package = new ExcelPackage(stream))
-                {
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
-                    var rowcount = worksheet.Dimension.Rows;
-                    for (int row = 2; row <= rowcount; row++)
-                    {
-                        list.Add(new DataSavingModel
-                        {
-                            Name = worksheet.Cells[row, 1].Value.ToString().Trim(),
-                            PhoneNumber = worksheet.Cells[row, 2].Value.ToString().Trim(),
-                        });
-                    }
-                }
-            }
-
-            var result = _addDataService.AddData(list);
-
-            return Ok(list);
         }
     }
 }

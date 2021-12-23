@@ -1,4 +1,5 @@
 ﻿using DataSavingApplication.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,6 @@ namespace DataSavingApplication.Service.Interface
 {
     public interface IAddDataService
     {
-        public bool AddData(List<DataSavingModel> requestData);
+        public bool AddData(IFormFile file);
     }
 }
