@@ -1,4 +1,5 @@
 ﻿using DataSavingApplication.Models;
+using DataSavingApplication.Service.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,10 +13,10 @@ namespace DataSavingApplication.Controllers
     [ApiController]
     public class GetDataController : ControllerBase
     {
-        private readonly DataSavingRepo dataSavingRepo;
-        public GetDataController()
+        private readonly IGetDataService _getDataService;
+        public GetDataController(IGetDataService getDataService)
         {
-            dataSavingRepo = new DataSavingRepo();
+            _getDataService = getDataService;
         }
 
         [Route("GetData")]
@@ -24,14 +25,14 @@ namespace DataSavingApplication.Controllers
         {
             try
             {
-                var data = dataSavingRepo.GetAllData();
+                var data = _getDataService.GetDatas();
 
                 if (data == null)
                 {
                     return NoContent();
                 }
 
-                return Ok(data);
+                return Ok(data.Result);
             }
 
             catch (Exception ex)

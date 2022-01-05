@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace DataSavingApplication.Controllers
 {
-
+    [Route("AddFile")]
     [ApiController]
     public class AddDataController : ControllerBase
     {
@@ -22,8 +22,7 @@ namespace DataSavingApplication.Controllers
         {
             _addDataService = addDataService;
         }
-
-        [Route("AddFile")]
+        
         [HttpPost]
         public IActionResult importExcel(IFormFile file)
         {
@@ -44,7 +43,6 @@ namespace DataSavingApplication.Controllers
 
                 return StatusCode(StatusCodes.Status500InternalServerError, new { ex.Message, Type = ex.GetType().ToString() });
             }
-
         }
     }
 }

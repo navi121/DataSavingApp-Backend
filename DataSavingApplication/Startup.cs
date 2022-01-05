@@ -33,6 +33,7 @@ namespace DataSavingApplication
             //options.UseSqlServer(Configuration.GetConnectionString("BloggingDatabase")));
 
             services.AddScoped<IAddDataService, AddDataService>();
+            services.AddScoped<IGetDataService, GetDataService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

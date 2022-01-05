@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSavingApplication", "DataSavingApplication\DataSavingApplication.csproj", "{43F041C0-00B2-4FAF-B811-22E8A572810E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataSavingApplication", "DataSavingApplication\DataSavingApplication.csproj", "{43F041C0-00B2-4FAF-B811-22E8A572810E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSavingAppTest", "DataSavingAppTest\DataSavingAppTest.csproj", "{2C62B7A6-E95D-4410-A77A-2DF22F6B25EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{43F041C0-00B2-4FAF-B811-22E8A572810E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43F041C0-00B2-4FAF-B811-22E8A572810E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43F041C0-00B2-4FAF-B811-22E8A572810E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C62B7A6-E95D-4410-A77A-2DF22F6B25EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C62B7A6-E95D-4410-A77A-2DF22F6B25EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C62B7A6-E95D-4410-A77A-2DF22F6B25EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C62B7A6-E95D-4410-A77A-2DF22F6B25EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

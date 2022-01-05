@@ -1,14 +1,10 @@
 ﻿using DataSavingApplication.Models;
 using DataSavingApplication.Service.Interface;
-using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using OfficeOpenXml;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DataSavingApplication.Service
 {
@@ -26,14 +22,11 @@ namespace DataSavingApplication.Service
 
             FluentValidation validate = new FluentValidation();
             ValidationResult result = validate.Validate(file);
-            IList<ValidationFailure> failures = result.Errors;
 
             if (!result.IsValid)
             {
-                foreach (ValidationFailure failure in failures)
-                {
-                    return false;
-                }
+
+                return false;
             }
 
             using (var stream = new MemoryStream())
@@ -54,7 +47,7 @@ namespace DataSavingApplication.Service
                     }
                 }
             }
-            
+
             dataSavingRepo.AddData(list);
 
             return true;
